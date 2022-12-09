@@ -85,17 +85,18 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 **Step 4: Running the simulation to find the energy consumption on the GPS route**
 
 (a) Internal Combustion
-- Open the Matlab script file 'BEV_Script_GPS.m'.
-- Specify your vehicle parameterization folder location in all the 'xlsread' commands, thus updating to your parameterization files.
-- Replace the route and operating cycle filenames in the script with your saved route.
-- Run the script, automatically simulating 'Refined_Model_45_Elec.slx'
-- Get the total fuel consumption in litres from the resulting plots.
-
-(b) Electric
 - Open the Matlab script file 'ICE_Script_GPS.m'.
 - Specify your vehicle parameterization folder location in all the 'xlsread' commands, thus updating to your parameterization files.
 - Replace the route and operating cycle filenames in the script with your saved route.
 - Run the script, automatically simulating 'Refined_Model_45_Autofactor_GPS.slx'
+- Get the total fuel consumption in litres from the resulting plots.
+
+(b) Electric
+- Open the Matlab script file 'BEV_Script_GPS.m'.
+- Specify your vehicle parameterization folder location in all the 'xlsread' commands, thus updating to your parameterization files.
+- Replace the route and operating cycle filenames in the script with your saved route.
+- Run the script, automatically simulating 'Refined_Model_45_Elec.slx'
+
 - Get the end battery status of charge, thus determining the total battery capacity used in kWh from the resulting plots.
 
 (c) Hybrid Combination
