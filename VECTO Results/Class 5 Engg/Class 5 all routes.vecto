@@ -1,0 +1,47 @@
+﻿{
+  "Header": {
+    "CreatedBy": "",
+    "Date": "2022-10-06T23:51:53.5475898Z",
+    "AppVersion": "3",
+    "FileVersion": 4
+  },
+  "Body": {
+    "SavedInDeclMode": false,
+    "EngineOnlyMode": false,
+    "VehicleFile": "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\VECTO SC\\Generic Vehicles\\Engineering Mode\\Class5_Tractor_4x2\\Class5_Tractor.vveh",
+    "EngineFile": "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\VECTO SC\\Generic Vehicles\\Engineering Mode\\Class5_Tractor_4x2\\Engine_325kW_12.7l.veng",
+    "GearboxFile": "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\VECTO SC\\Generic Vehicles\\Engineering Mode\\Class5_Tractor_4x2\\AMT_12.vgbx",
+    "AuxiliaryAssembly": "Classic",
+    "AuxiliaryVersion": "CLASSIC",
+    "AdvancedAuxiliaryFilePath": "",
+    "Aux": [],
+    "Padd": 0.0,
+    "VACC": "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\VECTO SC\\Generic Vehicles\\Engineering Mode\\Class5_Tractor_4x2\\Truck.vacc",
+    "LAC": {
+      "Enabled": true,
+      "PreviewDistanceFactor": 10.0,
+      "DF_offset": 2.5,
+      "DF_scaling": 1.5,
+      "DF_targetSpeedLookup": "",
+      "Df_velocityDropLookup": "",
+      "MinSpeed": 50.0
+    },
+    "OverSpeedEcoRoll": {
+      "Mode": "Off",
+      "MinSpeed": 50.0,
+      "OverSpeed": 2.5,
+      "UnderSpeed": 5.0
+    },
+    "Cycles": [
+      "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\vecto\\2021_07_29-VECTO-3.3.10.2401\\Mission Profiles\\Coach.vdri",
+      "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\vecto\\2021_07_29-VECTO-3.3.10.2401\\Mission Profiles\\Construction.vdri",
+      "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\vecto\\2021_07_29-VECTO-3.3.10.2401\\Mission Profiles\\HeavyUrban.vdri",
+      "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\vecto\\2021_07_29-VECTO-3.3.10.2401\\Mission Profiles\\Interurban.vdri",
+      "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\vecto\\2021_07_29-VECTO-3.3.10.2401\\Mission Profiles\\LongHaul.vdri",
+      "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\vecto\\2021_07_29-VECTO-3.3.10.2401\\Mission Profiles\\RegionalDelivery.vdri",
+      "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\vecto\\2021_07_29-VECTO-3.3.10.2401\\Mission Profiles\\Suburban.vdri",
+      "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\vecto\\2021_07_29-VECTO-3.3.10.2401\\Mission Profiles\\Urban.vdri",
+      "C:\\Users\\Kshitij\\Desktop\\Thesis docs\\VECTO TOTAL\\vecto\\2021_07_29-VECTO-3.3.10.2401\\Mission Profiles\\UrbanDelivery.vdri"
+    ]
+  }
+}
