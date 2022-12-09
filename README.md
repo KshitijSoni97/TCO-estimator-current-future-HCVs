@@ -33,7 +33,9 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 - Copy the existing Electric vehicle definition folder 'Vehicle 5 - Class 3 BEV loaded' and rename it according to your vehicle.
 - Utilize the data available from your vehicle manufacturer to parameterize the file for your choice of vehicle.
 - The files that need to be parameterized are named hereby : 
+
       Input_Definition_File.xlsx                  Vehicle and environment Parameterization
+      
 - Save all the parameterization files in your vehicle folder.
 
 (c) Hybrid combination
