@@ -17,6 +17,7 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 - Copy the existing Internal combustion vehicle definition folder 'Vehicle 2 - Class 5 TnT' and rename it according to your vehicle.
 - Utilize the data available in the **report appendix** to choose and parameterize the files for your choice of vehicle.
 - The files that need to be parameterized are named hereby : 
+
       325kW (2).xlsx / 175kW (2).xlsx             Engine BSFC Map
       325kW.xlsx / 175kW.xlsx                     Engine Torque Map
       All Gears.xlsx                              All Gears Loss Maps
@@ -25,6 +26,7 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
       FC_Map.xlsx                                 Fuel Consumption Map
       Input_Definition_File.xlsx                  Vehicle and environment Parameterization
       Throttle Torque.xlsx                        Throttle Map
+      
 - Save all the parameterization files in your vehicle folder.
 
 (b) Electric
@@ -39,6 +41,7 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 - Utilize the data available from your **tractor manufacturer and the report appendix** to parameterize the file for your choice of ICE tractor.
 - Utilize the data available from your E-trailer manufacturer to parameterize the file for your choice of e-trailer.
 - The files that need to be parameterized are named hereby : 
+
       325kW (2).xlsx / 175kW (2).xlsx             Engine BSFC Map
       325kW.xlsx / 175kW.xlsx                     Engine Torque Map
       All Gears.xlsx                              All Gears Loss Maps
@@ -48,6 +51,7 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
       Input_Definition_File.xlsx                  Vehicle and environment Parameterization
       Throttle Torque.xlsx                        Throttle Map
       Input_Definition_File_Etrailer.xlsx         Trailer drivetrain and environment Parameterization
+      
 - Save all the parameterization files in your vehicle combination folder.
 
 
