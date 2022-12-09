@@ -14,19 +14,41 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 **Step 1: Parameterizing a new vehicle**
 
 (a) Internal combustion
-- Copy one of the existing Internal combustion vehicle definition folder and rename it according to your vehicle.
-- Utilize the data available in the report appendix to choose and parameterize the files for your choice of vehicle.
+- Copy the existing Internal combustion vehicle definition folder 'Vehicle 2 - Class 5 TnT' and rename it according to your vehicle.
+- Utilize the data available in the **report appendix** to choose and parameterize the files for your choice of vehicle.
 - The files that need to be parameterized are named hereby : 
+      325kW (2).xlsx / 175kW (2).xlsx             Engine BSFC Map
+      325kW.xlsx / 175kW.xlsx                     Engine Torque Map
+      All Gears.xlsx                              All Gears Loss Maps
+      AxlLoss.xlsx                                Axle Loss Maps
+      Basic_GBXDef.xlsx                           Basic gearbox ratio definition
+      FC_Map.xlsx                                 Fuel Consumption Map
+      Input_Definition_File.xlsx                  Vehicle and environment Parameterization
+      Throttle Torque.xlsx                        Throttle Map
 - Save all the parameterization files in your vehicle folder.
 
 (b) Electric
-- Copy the existing Electric vehicle definition folder and rename it according to your vehicle.
-- Utilize the data available from your vehicle manufacturer to parameterize your choice of vehicle.
+- Copy the existing Electric vehicle definition folder 'Vehicle 5 - Class 3 BEV loaded' and rename it according to your vehicle.
+- Utilize the data available from your vehicle manufacturer to parameterize the file for your choice of vehicle.
 - The files that need to be parameterized are named hereby : 
+      Input_Definition_File.xlsx                  Vehicle and environment Parameterization
 - Save all the parameterization files in your vehicle folder.
 
 (c) Hybrid combination
-
+- Copy the existing ICE tractor and E-trailer combination definition folder 'Vehicle 6 - Class 5 tractorEtrailer' and rename it according to your vehicle.
+- Utilize the data available from your **tractor manufacturer and the report appendix** to parameterize the file for your choice of ICE tractor.
+- Utilize the data available from your E-trailer manufacturer to parameterize the file for your choice of e-trailer.
+- The files that need to be parameterized are named hereby : 
+      325kW (2).xlsx / 175kW (2).xlsx             Engine BSFC Map
+      325kW.xlsx / 175kW.xlsx                     Engine Torque Map
+      All Gears.xlsx                              All Gears Loss Maps
+      AxlLoss.xlsx                                Axle Loss Maps
+      Basic_GBXDef.xlsx                           Basic gearbox ratio definition
+      FC_Map.xlsx                                 Fuel Consumption Map
+      Input_Definition_File.xlsx                  Vehicle and environment Parameterization
+      Throttle Torque.xlsx                        Throttle Map
+      Input_Definition_File_Etrailer.xlsx         Trailer drivetrain and environment Parameterization
+- Save all the parameterization files in your vehicle combination folder.
 
 
 **Step 2: Getting the specific GPS route**
@@ -55,11 +77,32 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 **Step 4: Running the simulation to find the energy consumption on the GPS route**
 
 (a) Internal Combustion
+- Open the Matlab script file 'BEV_Script_GPS.m'.
+- Specify your vehicle parameterization folder location in all the 'xlsread' commands, thus updating to your parameterization files.
+- Replace the route and operating cycle filenames in the script with your saved route.
+- Run the script, automatically simulating 'Refined_Model_45_Elec.slx'
+- Get the total fuel consumption in litres from the resulting plots.
+
+(b) Electric
 - Open the Matlab script file 'ICE_Script_GPS.m'.
 - Specify your vehicle parameterization folder location in all the 'xlsread' commands, thus updating to your parameterization files.
 - Replace the route and operating cycle filenames in the script with your saved route.
-- The files that need to be read in Matlab are named hereby :
 - Run the script, automatically simulating 'Refined_Model_45_Autofactor_GPS.slx'
-- Get the total energy consumption from the resulting plots.
+- Get the end battery status of charge, thus determining the total battery capacity used in kWh from the resulting plots.
 
-(b) Electric
+(c) Hybrid Combination
+- Open the Matlab script file 'ICEBEV_Script_GPS.m'.
+- Specify your combination parameterization folder location in all the 'xlsread' commands for both tractor and e-trailer parameterization.
+- Replace the route and operating cycle filenames in the script with your saved route.
+- Run the script, automatically simulating 'Refined_Model_45_Autofactor_GPS.slx' and 'Refined_Model_45_Etrailer.slx'.
+- Get the end fuel consumption and battery status of charge, thus determining the total energy used by both drivetrains.
+
+**Step 5: TCO estimation**
+
+- Open the excel document 'TCO calculator.xlsx' and choose the cost sheet for your respective vehicle type.
+- The blocks highlighted as Inputs need to be parameterized according to the economic factors and variable costs affecting the operation of the vehicle on the simulated route.
+- More details about the acquired cost data are available in the report.
+- From the simulation results, fill the trip length in kms and the energy consumed in Litres or kWh, according to the vehicle.
+- The calculator will provide a Total ownership-cost estimate in terms of Euros/tonne. km i.e. Payload and distance specific costs.
+
+
