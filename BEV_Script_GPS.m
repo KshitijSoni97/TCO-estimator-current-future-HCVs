@@ -1,8 +1,11 @@
 clc
 clear 
 
+%% Set the directory as the folder containing the 'Total Simulink  Model files'
+cd ('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files');
+
 %% Vehicle Definition Combustion
-VehicleDefine = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 5 - Class 3 BEV loaded\Input_Definition_File.xlsx');
+VehicleDefine = xlsread('Vehicle 5 - Class 3 BEV loaded\Input_Definition_File.xlsx');
 Whlbs = VehicleDefine(1,3);                                               % Total Wheelbase in m
 NoWhlFA = VehicleDefine(2,3);                                                % Number of wheels on the front axle
 NoRA = VehicleDefine(3,3);                                                   % Number of Rear Axles
@@ -57,9 +60,9 @@ MaxAcc = 1;                                     % Defining maximum acceleration 
 % %____________________________________________________________________________________________________________________________________
 
 %% Read saved file for GPS to get long-lat and elevation data and filter
-R = readmatrix('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\GPS Routes and OC\Turin - Lyon.csv');                                 % Replace and read the saved csv file as a table
-Slowtimes = readmatrix('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Slow');     % Manually entering the urban sections and slow sections
-Stoptimes = readmatrix('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Stop');     % Manually entering the stop points
+R = readmatrix('GPS Routes and OC\Turin - Lyon.csv');                                 % Replace and read the saved csv file as a table
+Slowtimes = readmatrix('GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Slow');     % Manually entering the urban sections and slow sections
+Stoptimes = readmatrix('GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Stop');     % Manually entering the stop points
 Rrep = R(:,7)==0;                                                   % Deleting the repeated waypoints
 R(Rrep,:) = [];
 R(isnan(R)) = 0;                                                    % Replacing NaN values with 0
@@ -150,7 +153,7 @@ Dist = [1:length(FMSP1)];
 %____________________________________________________________________________________________________________________________________
 
 %% Running the Simulation
-out = sim('Refined_Model_43_Elec4_regen.slx',30000);           
+out = sim('Refined_Model_45_Elec.slx',30000);           
 %____________________________________________________________________________________________________________________________________
  
 % %% Plot Route only for GPS maps

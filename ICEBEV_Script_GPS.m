@@ -1,8 +1,11 @@
 clc
 clear 
 
+%% Set the directory as the folder containing the 'Total Simulink  Model files'
+cd ('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files');
+
 %% Vehicle Definition Combustion
-VehicleDefine = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 6 - Class 5 tractorEtrailer\Input_Definition_File.xlsx');
+VehicleDefine = xlsread('Vehicle 6 - Class 5 tractorEtrailer\Input_Definition_File.xlsx');
 Whlbs = VehicleDefine(1,3);                                               % Total Wheelbase in m
 NoWhl = VehicleDefine(2,3);                                                % Number of wheels on the front axle
 NoAxl = VehicleDefine(3,3);                                                   % Number of Rear Axles
@@ -42,20 +45,20 @@ MaxDec = 1;                                     % Defining maximum deceleration 
 MaxAcc = 1;                                     % Defining maximum acceleration according to literature in m/s^2
 
 %% ICE  - Gearbox Definition / Loss Maps
-GBXDefine = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 6 - Class 5 tractorEtrailer\Basic_GBXDef.xlsx');
+GBXDefine = xlsread('Vehicle 6 - Class 5 tractorEtrailer\Basic_GBXDef.xlsx');
 GNo = GBXDefine(:,1);
 GRa = GBXDefine(:,2);
 etaGRa = GBXDefine(:,3);
 
 %% ICE  - All speeds loss map
 % Format the gearbox loss input file into a single excel as the example [GearNo,GInprpm,GInpTor,GTorLoss]
-GLoss = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 6 - Class 5 tractorEtrailer\All Gears.csv');
+GLoss = xlsread('Vehicle 6 - Class 5 tractorEtrailer\All Gears.csv');
 [GearNo,GInprpm,GInpTor,GTorLoss] = GearLossMap(GLoss);
 
 %% ICE - BSFC and Throttle Map
 clc
-ThrottleMap = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 6 - Class 5 tractorEtrailer\Throttle Torque.xlsx');              % Upload throttle map
-FCMap = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 6 - Class 5 tractorEtrailer\FC_Map.xlsx');                             % Upload Fuel Consumption Map with same breakpoints
+ThrottleMap = xlsread('Vehicle 6 - Class 5 tractorEtrailer\Throttle Torque.xlsx');              % Upload throttle map
+FCMap = xlsread('Vehicle 6 - Class 5 tractorEtrailer\FC_Map.xlsx');                             % Upload Fuel Consumption Map with same breakpoints
 FCTableVal = FCMap(2:end,2:end);
 ThrotTableVal = ThrottleMap(2:end,2:end);
 ThrotLev = ThrottleMap(:,1);
@@ -68,7 +71,7 @@ MaxTorValThrot = max(ThrotTableVal,[],2);
 
 %% ICE - Vehicle Powertrain modelling
 clc
-TorCurRaw= xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 6 - Class 5 tractorEtrailer\325kW.csv');
+TorCurRaw= xlsread('Vehicle 6 - Class 5 tractorEtrailer\325kW.csv');
 NoLev = round(length(TorCurRaw),-2);
 EngineRpmRaw = TorCurRaw(:,1);
 FLoadTorRaw = TorCurRaw(:,2);
@@ -90,7 +93,7 @@ MaxAdhForce = mu*(Mvtot-(Mvtot*Mratio));                                    % Dr
 %____________________________________________________________________________________________________________________________________
 
 %% Axle loss definition
-AxlLoss = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 6 - Class 5 tractorEtrailer\AxlLoss.xlsx');
+AxlLoss = xlsread('Vehicle 6 - Class 5 tractorEtrailer\AxlLoss.xlsx');
 ALTableVal = AxlLoss(2:end,2:end);
 ALInpTor = AxlLoss(:,1);
 ALInpSpeed = AxlLoss (1,:);
@@ -112,7 +115,7 @@ end
 
 %% E-Trailer Definition
 
-Etr = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 6 - Class 5 tractorEtrailer\Input_Definition_File_Etrailer.xlsx');
+Etr = xlsread('Vehicle 6 - Class 5 tractorEtrailer\Input_Definition_File_Etrailer.xlsx');
 DynRolRadE = Etr(1,3);                          % E-trailer tyre rolling radius
 Mtr = Etr(2,3);                                 % Mass of the Trailer
 Mload = Etr(3,3);                               % Expendable mass/ Extra mass on vehicle
@@ -145,9 +148,9 @@ P_mmax = Etr(1,3);                              % Motor peak power
 % %____________________________________________________________________________________________________________________________________
 
 %% Read saved file for GPS to get long-lat and elevation data and filter
-R = readmatrix('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\GPS Routes and OC\Turin - Lyon.csv');                                 % Replace and read the saved csv file as a table
-Slowtimes = readmatrix('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Slow');     % Manually entering the urban sections and slow sections
-Stoptimes = readmatrix('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Stop');     % Manually entering the stop points
+R = readmatrix('GPS Routes and OC\Turin - Lyon.csv');                                 % Replace and read the saved csv file as a table
+Slowtimes = readmatrix('GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Slow');     % Manually entering the urban sections and slow sections
+Stoptimes = readmatrix('GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Stop');     % Manually entering the stop points
 Rrep = R(:,7)==0;                                                   % Deleting the repeated waypoints
 R(Rrep,:) = [];
 R(isnan(R)) = 0;                                                    % Replacing NaN values with 0

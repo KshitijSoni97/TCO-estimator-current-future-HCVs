@@ -1,7 +1,10 @@
 clc
 clear 
+%% Set the directory as the folder containing the 'Total Simulink  Model files'
+cd ('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files');
+
 %%
-VehicleDefine = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 4 - Class 5 Super Eco Combi\Input_Definition_File.xlsx');
+VehicleDefine = xlsread('Vehicle 4 - Class 5 Super Eco Combi\Input_Definition_File.xlsx');
 Whlbs = VehicleDefine(1,3);                                 % Total Wheelbase in m
 NoWhl = VehicleDefine(2,3);                                 % Number of wheels on the front axle
 NoAxl = VehicleDefine(3,3);                                 % Number of Rear Axles
@@ -39,20 +42,20 @@ MaxDec = 1;                                                 % Defining maximum d
 MaxAcc = 1;                                                 % Defining maximum acceleration according to literature in m/s^2
 
 %% ICE  - Gearbox Definition / Loss Maps
-GBXDefine = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 4 - Class 5 Super Eco Combi\Basic_GBXDef.xlsx');
+GBXDefine = xlsread('Vehicle 4 - Class 5 Super Eco Combi\Basic_GBXDef.xlsx');
 GNo = GBXDefine(:,1);
 GRa = GBXDefine(:,2);
 etaGRa = GBXDefine(:,3);
 
 %% ICE  - All speeds loss map
 % Format the gearbox loss input file into a single excel as the example [GearNo,GInprpm,GInpTor,GTorLoss]
-GLoss = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 4 - Class 5 Super Eco Combi\All Gears.csv');
+GLoss = xlsread('Vehicle 4 - Class 5 Super Eco Combi\All Gears.csv');
 [GearNo,GInprpm,GInpTor,GTorLoss] = GearLossMap(GLoss);
 
 %% ICE - BSFC and Throttle Map
 clc
-ThrottleMap = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 4 - Class 5 Super Eco Combi\Throttle Torque.xlsx');              % Upload throttle map
-FCMap = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 4 - Class 5 Super Eco Combi\FC_Map.xlsx');                             % Upload Fuel Consumption Map with same breakpoints
+ThrottleMap = xlsread('Vehicle 4 - Class 5 Super Eco Combi\Throttle Torque.xlsx');              % Upload throttle map
+FCMap = xlsread('Vehicle 4 - Class 5 Super Eco Combi\FC_Map.xlsx');                             % Upload Fuel Consumption Map with same breakpoints
 FCTableVal = FCMap(2:end,2:end);
 ThrotTableVal = ThrottleMap(2:end,2:end);
 ThrotLev = ThrottleMap(:,1);
@@ -65,7 +68,7 @@ MaxTorValThrot = max(ThrotTableVal,[],2);
 
 %% ICE - Vehicle Powertrain modelling
 clc
-TorCurRaw= xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 4 - Class 5 Super Eco Combi\325kW.csv');
+TorCurRaw= xlsread('Vehicle 4 - Class 5 Super Eco Combi\325kW.csv');
 NoLev = round(length(TorCurRaw),-2);                                        % No of throttle increments
 EngineRpmRaw = TorCurRaw(:,1);                                              % Engine speed in rpm
 FLoadTorRaw = TorCurRaw(:,2);                                               % Engine Torque in Nm
@@ -91,7 +94,7 @@ MaxAdhForce = mu*(Mvtot-(Mvtot*Mratio));                                    % Dr
 %____________________________________________________________________________________________________________________________________
 
 %% Axle loss definition (Using loss tables from VECTO)
-AxlLoss = xlsread('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\Vehicle 4 - Class 5 Super Eco Combi\AxlLoss.xlsx');
+AxlLoss = xlsread('Vehicle 4 - Class 5 Super Eco Combi\AxlLoss.xlsx');
 ALTableVal = AxlLoss(2:end,2:end);
 ALInpTor = AxlLoss(:,1);
 ALInpSpeed = AxlLoss (1,:);
@@ -100,29 +103,29 @@ ALInpSpeed(isnan(ALInpSpeed)) = [];
 
 %____________________________________________________________________________________________________________________________________
 
-% %% GPS Route Definition
-% % Open maps and select route:
-% maps = 'https://www.google.co.in/maps';
-% web(maps)
-% % Select origin and destination and get directions
-% % Select mode as driving
-% % copy webpage url
-% 
-% %% Acquiring route data
-% gpsvisual = 'https://www.gpsvisualizer.com/convert_input';
-% web(gpsvisual)
-% % Enter the copied url in the blank space
-% % Paste the GOOGLE API key in the space provided
-% % Select slope and distance along with elevation data
-% % Save file as comma separated values
-% % Open and edit obtained csv file to read data in Matlab
-% % Rename file and save it in this Matlab directory
-% %____________________________________________________________________________________________________________________________________
+%% GPS Route Definition
+% Open maps and select route:
+maps = 'https://www.google.co.in/maps';
+web(maps)
+% Select origin and destination and get directions
+% Select mode as driving
+% copy webpage url
+
+%% Acquiring route data
+gpsvisual = 'https://www.gpsvisualizer.com/convert_input';
+web(gpsvisual)
+% Enter the copied url in the blank space
+% Paste the GOOGLE API key in the space provided
+% Select slope and distance along with elevation data
+% Save file as comma separated values
+% Open and edit obtained csv file to read data in Matlab
+% Rename file and save it in this Matlab directory
+%____________________________________________________________________________________________________________________________________
 
 %% Read saved file for GPS to get long-lat and elevation data and filter
-R = readmatrix('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\GPS Routes and OC\Turin - Lyon.csv');                                 % Replace and read the saved csv file as a table
-Slowtimes = readmatrix('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Slow');     % Manually entering the urban sections and slow sections
-Stoptimes = readmatrix('C:\Users\Kshitij\Desktop\Thesis docs\Code\Total Simulink  Model files\GPS Routes and OC\Turin - Lyon - OC_description.xlsx','Sheet','Stop');     % Manually entering the stop points
+R = readmatrix('GPS Routes and OC\Dusseldorf - Cologne.csv');                                 % Replace and read the saved csv file as a table
+Slowtimes = readmatrix('GPS Routes and OC\Dusseldorf - Cologne - OC_description.xlsx','Sheet','Slow');     % Manually entering the urban sections and slow sections
+Stoptimes = readmatrix('GPS Routes and OC\Dusseldorf - Cologne - OC_description.xlsx','Sheet','Stop');     % Manually entering the stop points
 Rrep = R(:,7)==0;                                                   % Deleting the repeated waypoints
 R(Rrep,:) = [];
 R(isnan(R)) = 0;                                                    % Replacing NaN values with 0
@@ -170,7 +173,7 @@ SegSPLatinmps(SegSPLatinmps>InpSpeedmps) = InpSpeedmps;            % Setting the
 MaxSpeedProfile = repelem(SegSPLatinmps,SegLeninm);                % Getting the complete speed profile according to lateral acceleration at every 1m interval for Max Lat Acc.                                                           
 MSPO = MaxSpeedProfile;
 
-%% Filtering the TSP according to a factor between 30 and 80 meters 
+%% Filtering the TSP according to a factor between 10 and 150 meters 
 % This is done to reduce the speed fluctuations caused by rogue values    
 s = divisors(length(MaxSpeedProfile));                             % Finding a factor to smoothen the TSP
 for i = 1: length(s)
@@ -180,7 +183,7 @@ for i = 1: length(s)
 end
 for i = 2:length(SegSPLatinmps)-2                                  % Removing extreme reductions as rogue data if length of reduction between stable speeds is less than 250 m (Take-off distance average)
     if SegSPLatinmps(i-1) >= 13 && SegSPLatinmps(i+1) >= 13 && SegLeninm(i) <= 3*sect && SegSPLatinmps(i) < SegSPLatinmps(i+1)
-        SegSPLatinmps(i) = SegSPLatinmps(i+1);
+        SegSPLatinmps(i) = SegSPLatinmps(i-1);
     end
 end
 FMSP = repelem(SegSPLatinmps,SegLeninm);
@@ -198,7 +201,7 @@ Slowtimes(isnan(Slowtimes)) = length(FMSP1);
 for i = 1:length(Stoptimes(:,1))                                % Adding the stop times
     for j = 1:length(FMSP1)
         if j == Stoptimes(i,1)
-            FMSP1(i) = 0;
+            FMSP1(j) = 0;
         end
     end
 end
@@ -213,7 +216,7 @@ Dist = [1:length(FMSP1)];
 %____________________________________________________________________________________________________________________________________
 
 %% Running the Simulation
-sim('Refined_Model_45_Autofactor_GPS.slx',30000);    
+% out = sim('Refined_Model_45_Autofactor_GPS.slx',30000);    
 
 %% Plot Route only for GPS maps
 figure('Name','Route and Interpolated Map')                 % Route in X-Y coordinates
