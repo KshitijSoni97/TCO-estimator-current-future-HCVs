@@ -82,7 +82,10 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 - Save it in the same Matlab directory.
 
 
-**Step 4: Running the simulation to find the energy consumption on the GPS route**
+**Step 4: Set the dirctory in the first line of code to the location of the folder - Total Simulink Files**
+
+
+**Step 5: Running the simulation to find the energy consumption on the GPS route**
 
 (a) Internal Combustion
 - Open the Matlab script file 'ICE_Script_GPS.m'.
@@ -105,7 +108,7 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 - Run the script section by section, automatically simulating 'Refined_Model_45_Autofactor_GPS.slx' and 'Refined_Model_45_Etrailer.slx'.
 - Get the end fuel consumption and battery status of charge, thus determining the total energy used by both drivetrains.
 
-**Step 5: TCO estimation**
+**Step 6: TCO estimation**
 
 - Open the excel document 'TCO calculator.xlsx' and choose the cost sheet for your respective vehicle type.
 - The blocks highlighted as Inputs need to be parameterized according to the economic factors and variable costs affecting the operation of the vehicle on the simulated route.
