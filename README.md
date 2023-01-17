@@ -82,7 +82,7 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 - Save it in the same Matlab directory.
 
 
-**Step 4: Set the dirctory in the first line of code to the location of the folder - Total Simulink Files**
+**Step 4: Set the directory from the first line of code to the location of the folder - Total Simulink Files**
 
 
 **Step 5: Running the simulation to find the energy consumption on the GPS route**
