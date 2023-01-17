@@ -88,21 +88,21 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 - Open the Matlab script file 'ICE_Script_GPS.m'.
 - Specify your vehicle parameterization folder location in all the 'xlsread' commands, thus updating to your parameterization files.
 - Replace the route and operating cycle filenames in the script with your saved route.
-- Run the script, automatically simulating 'Refined_Model_45_Autofactor_GPS.slx'
+- Run the script section by section, automatically simulating 'Refined_Model_45_Autofactor_GPS.slx'
 - Get the total fuel consumption in litres from the resulting plots.
 
 (b) Electric
 - Open the Matlab script file 'BEV_Script_GPS.m'.
 - Specify your vehicle parameterization folder location in all the 'xlsread' commands, thus updating to your parameterization files.
 - Replace the route and operating cycle filenames in the script with your saved route.
-- Run the script, automatically simulating 'Refined_Model_43_Elec5_ch.slx'
+- Run the scriptsection by section, automatically simulating 'Refined_Model_43_Elec5_ch.slx'
 - Get the end battery status of charge, thus determining the total battery capacity used in kWh from the resulting plots.
 
 (c) Hybrid Combination
-- Open the Matlab script file 'ICEBEV_Script_GPS.m'.
+- Open the Matlab script file 'ICE_Script_GPS.m'.
 - Specify your combination parameterization folder location in all the 'xlsread' commands for both tractor and e-trailer parameterization.
 - Replace the route and operating cycle filenames in the script with your saved route.
-- Run the script, automatically simulating 'Refined_Model_45_Autofactor_GPS.slx' and 'Refined_Model_45_Etrailer.slx'.
+- Run the script section by section, automatically simulating 'Refined_Model_45_Autofactor_GPS.slx' and 'Refined_Model_45_Etrailer.slx'.
 - Get the end fuel consumption and battery status of charge, thus determining the total energy used by both drivetrains.
 
 **Step 5: TCO estimation**
