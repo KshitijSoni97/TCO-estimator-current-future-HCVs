@@ -95,7 +95,7 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 - Open the Matlab script file 'BEV_Script_GPS.m'.
 - Specify your vehicle parameterization folder location in all the 'xlsread' commands, thus updating to your parameterization files.
 - Replace the route and operating cycle filenames in the script with your saved route.
-- Run the script, automatically simulating 'Refined_Model_45_Elec.slx'
+- Run the script, automatically simulating 'Refined_Model_43_Elec5_ch.slx'
 - Get the end battery status of charge, thus determining the total battery capacity used in kWh from the resulting plots.
 
 (c) Hybrid Combination
