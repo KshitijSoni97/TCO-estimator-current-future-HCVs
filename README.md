@@ -99,7 +99,7 @@ To simulate each of the models and get a TCO estimate, follow the respective ins
 - Get the end battery status of charge, thus determining the total battery capacity used in kWh from the resulting plots.
 
 (c) Hybrid Combination
-- Open the Matlab script file 'ICE_Script_GPS.m'.
+- Open the Matlab script file 'ICEBEV_Script_GPS.m'.
 - Specify your combination parameterization folder location in all the 'xlsread' commands for both tractor and e-trailer parameterization.
 - Replace the route and operating cycle filenames in the script with your saved route.
 - Run the script section by section, automatically simulating 'Refined_Model_45_Autofactor_GPS.slx' and 'Refined_Model_45_Etrailer.slx'.
